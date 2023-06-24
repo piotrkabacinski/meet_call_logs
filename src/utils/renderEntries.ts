@@ -20,7 +20,7 @@ export const renderEntries = async (tbodyElement: HTMLTableSectionElement): Prom
 
   tbodyElement.innerHTML =
     entries
-      .sort((a, b) => new Date(b.dateTime).getTime() - +new Date(a.dateTime).getTime())
+      .sort((a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime())
       .map(mapEntry)
       .join("")
 
