@@ -1,10 +1,10 @@
 # Google Meet Logs
 
-Chromium extension for logging Google Meet calls end times (and maybe more information in the future).
+Chromium extension for logging Google Meet calls end times. Tracks call title, joining time and it's end (by clicking on hang up icon ☎️).
 
 To test it, simply load project's `dist` content as browser [extension](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked).
 
-⚠️ Extension depends on Google Meet's Polish internalization 🇵🇱.
+⚠️ Extension depends on Google Meet's Polish internalization 🇵🇱. See `src/consts/config.ts` for used selectors.
 
 ## Development
 

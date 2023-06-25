@@ -1,8 +1,9 @@
 {
-  "name": "Meet timer logs",
-  "version": "0",
+  "name": "Google Meet Timer Logs",
+  "version": "0.0.1",
   "manifest_version": 3,
   "minimum_chrome_version": "110.0",
+  "description": "Google Meet calls end times logs",
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "index.html"
