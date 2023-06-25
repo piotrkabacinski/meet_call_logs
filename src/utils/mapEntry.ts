@@ -9,7 +9,10 @@ export const mapEntry = (entry: Entry, index: number): string => {
     </td>
     <td>
       ${endDateTime.toLocaleDateString()}
-      ${endDateTime.toLocaleTimeString()}
+      ${endDateTime.toLocaleTimeString(undefined, {
+        hour: "2-digit",
+        minute: "2-digit",
+      })}
     </td>
     <td>
       <button type="button" data-index="${index}">

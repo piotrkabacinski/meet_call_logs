@@ -4,7 +4,7 @@
     </td>
     <td>
       ${e.toLocaleDateString()}
-      ${e.toLocaleTimeString()}
+      ${e.toLocaleTimeString(void 0,{hour:"2-digit",minute:"2-digit"})}
     </td>
     <td>
       <button type="button" data-index="${r}">
@@ -16,4 +16,4 @@
       <td colspan="3"> 
         No entries available yet
       </td>
-    </tr>`;return}t.innerHTML=e.sort((o,a)=>new Date(a.endDateTime).getTime()-new Date(o.endDateTime).getTime()).map(m).join("");let c=document.querySelectorAll("button");Array.from(c).forEach(o=>{o.addEventListener("click",a=>{s(e,a.target.dataset.index),i(t)})})};document.addEventListener("DOMContentLoaded",async()=>{let t=document.querySelector("#table tbody");if(!t)throw"Table element not found.";await i(t)});})();
+    </tr>`;return}t.innerHTML=e.sort((o,a)=>new Date(a.endDateTime).getTime()-new Date(o.endDateTime).getTime()).map(m).join("");let d=document.querySelectorAll("button");Array.from(d).forEach(o=>{o.addEventListener("click",a=>{s(e,a.target.dataset.index),i(t)})})};document.addEventListener("DOMContentLoaded",async()=>{let t=document.querySelector("#table tbody");if(!t)throw"Table element not found.";await i(t)});})();
