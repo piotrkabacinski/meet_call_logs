@@ -19,7 +19,7 @@ import type { Entry } from "./types/Entry";
       const entry: Entry = {
         id: crypto.randomUUID(),
         title: document.title.replace(config.pageTitlePrefix, "").trim(),
-        meetId: location.pathname.replace("/", ""),
+        meetId: location.pathname,
         startDateTime,
         endDateTime: new Date().toISOString(),
       };
