@@ -2,7 +2,8 @@ import { renderEntries } from "./utils/renderEntries";
 
 {
   document.addEventListener("DOMContentLoaded", async () => {
-    const tbodyElement = document.querySelector<HTMLTableSectionElement>("#table tbody");
+    const tbodyElement =
+      document.querySelector<HTMLTableSectionElement>("#table tbody");
 
     if (!tbodyElement) throw `Table element not found.`;
 

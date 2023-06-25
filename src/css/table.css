@@ -5,7 +5,7 @@
 }
 
 #table tr:nth-child(2n) {
-  background: var(--dark-grey);
+  background: var(--highlight);
 }
 
 #table th,
@@ -13,6 +13,14 @@
   padding: 5px;
   border: 1px solid var(--dark-grey);
   text-align: left;
+  white-space: nowrap;
+}
+
+#table td.title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0;
 }
 
 #table button {

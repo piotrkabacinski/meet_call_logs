@@ -1,4 +1,7 @@
 export type Entry = {
+  id: string;
+  title: string;
   meetId: string;
-  dateTime: string;
+  startDateTime: string;
+  endDateTime: string;
 };

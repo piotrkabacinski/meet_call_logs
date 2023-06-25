@@ -4,17 +4,24 @@ import type { Entry } from "./types/Entry";
 {
   const { storageKey } = config;
 
-  const endButtonCallSelector = "button[aria-label='Opuść rozmowę']";
+  let startDateTime: string | undefined;
 
   const observer = new MutationObserver(() => {
-    const endOfCallButton = document.querySelector<HTMLButtonElement>(endButtonCallSelector);
+    const endOfCallButton = document.querySelector<HTMLButtonElement>(
+      config.endButtonCallSelector
+    );
 
     if (!endOfCallButton) return;
 
+    startDateTime = new Date().toISOString()
+
     endOfCallButton.addEventListener("click", async () => {
       const entry: Entry = {
-        meetId: location.pathname,
-        dateTime: new Date().toISOString(),
+        id: crypto.randomUUID(),
+        title: document.title.replace(config.pageTitlePrefix, "").trim(),
+        meetId: location.pathname.replace("/", ""),
+        startDateTime,
+        endDateTime: new Date().toISOString(),
       };
 
       const entries = await chrome.storage.local.get(storageKey);
@@ -32,5 +39,9 @@ import type { Entry } from "./types/Entry";
     observer.disconnect();
   });
 
-  observer.observe(document.body, { attributes: false, childList: true, subtree: true });
+  observer.observe(document.body, {
+    attributes: false,
+    childList: true,
+    subtree: true,
+  });
 }
