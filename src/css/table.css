@@ -31,4 +31,6 @@
   border-radius: 3px;
 }
 
-
+.no-entries {
+  text-align: center;
+}

@@ -26,6 +26,8 @@
     </tr>
   `};var m=async t=>{let n=(await chrome.storage.local.get(i.storageKey))[i.storageKey];if(!n||!n.length){t.innerHTML=`<tr>
       <td colspan="5"> 
-        No entries available yet
+        <p class="no-entries">
+          No entries available yet
+        </p>
       </td>
     </tr>`;return}t.innerHTML=n.sort((o,r)=>new Date(r.endDateTime).getTime()-new Date(o.endDateTime).getTime()).map(f).join("");let e=document.querySelectorAll("button");Array.from(e).forEach(o=>{o.addEventListener("click",r=>{d(n,r.target.dataset.index),m(t)})})};document.addEventListener("DOMContentLoaded",async()=>{let t=document.querySelector("#table tbody");if(!t)throw"Table body element not found.";await m(t)});})();
