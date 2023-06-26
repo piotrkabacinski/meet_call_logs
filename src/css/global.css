@@ -21,3 +21,12 @@ main {
   max-height: 300px;
   overflow: auto;
 }
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

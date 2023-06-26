@@ -5,7 +5,13 @@ export const mapEntry = (entry: Entry, index: number): string => {
 
   return `<tr>
     <td class="title">
-      <code>${entry.title || entry.meetId}</code>
+      <a
+        href="https://meet.google.com/${entry.meetId}"
+        target="_blank"
+        ref="noopener noreferrer"
+      >
+        ${entry.title}
+      </a>
     </td>
     <td>
       ${endDateTime.toLocaleDateString()}

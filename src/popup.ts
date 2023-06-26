@@ -5,7 +5,7 @@ import { renderEntries } from "./utils/renderEntries";
     const tbodyElement =
       document.querySelector<HTMLTableSectionElement>("#table tbody");
 
-    if (!tbodyElement) throw `Table element not found.`;
+    if (!tbodyElement) throw `Table body element not found.`;
 
     await renderEntries(tbodyElement);
   });
