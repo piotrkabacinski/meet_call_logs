@@ -1,10 +1,5 @@
-export const calculateDuration = (
-  endDate: Date,
-  startDate: Date
-): string => {
-  let diffInMilliseconds = Math.abs(
-    startDate.getTime() - endDate.getTime()
-  );
+export const calculateDuration = (endDate: Date, startDate: Date): string => {
+  let diffInMilliseconds = Math.abs(startDate.getTime() - endDate.getTime());
 
   let diffInSeconds = Math.floor(diffInMilliseconds / 1000);
 
@@ -13,6 +8,7 @@ export const calculateDuration = (
   const hours = Math.floor(diffInSeconds / 3600);
   diffInSeconds -= hours * 3600;
   const minutes = Math.floor(diffInSeconds / 60);
+  const seconds = diffInSeconds - minutes * 60;
 
   let result = "";
 
@@ -20,7 +16,11 @@ export const calculateDuration = (
 
   if (hours) result += hours + " h ";
 
-  if (minutes) result += minutes + " min ";
+  if (minutes) {
+    result += minutes + " min ";
+  } else if (seconds) {
+    result += seconds + " sec ";
+  }
 
   return result;
 };
