@@ -12,7 +12,7 @@ export const renderEntries = async (
 
   if (!entries || !entries.length) {
     tbodyElement.innerHTML = `<tr>
-      <td colspan="3"> 
+      <td colspan="5"> 
         No entries available yet
       </td>
     </tr>`;
