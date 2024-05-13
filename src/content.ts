@@ -7,9 +7,7 @@ import type { Entry } from "./types/Entry";
   let startDateTime: string | undefined;
 
   const observer = new MutationObserver(() => {
-    const endOfCallButton = document.querySelector<HTMLButtonElement>(
-      config.endButtonCallSelector
-    );
+    const endOfCallButton = Array.from(document.querySelectorAll("i")).find((e) => e.innerText === "call_end").parentElement;
 
     if (!endOfCallButton) return;
 
