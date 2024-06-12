@@ -7,17 +7,25 @@ import type { Entry } from "./types/Entry";
   let startDateTime: string | undefined;
 
   const observer = new MutationObserver(() => {
-    const endOfCallButton = Array.from(document.querySelectorAll("i")).find((e) => e.innerText === "call_end").parentElement;
+    const endOfCallIcon = Array.from(document.querySelectorAll("i")).find((e) => e.innerText === "call_end");
 
-    if (!endOfCallButton) return;
+    if (!endOfCallIcon) return;
+
+    const endOfCallButton = endOfCallIcon.parentElement;
+
+    if (!endOfCallButton) throw "End of call button not found";
 
     startDateTime = new Date().toISOString()
+
+    const titleElement = document.querySelector("[data-meeting-title]");
+    
+    const meetId = location.pathname.replace("/", "");
 
     endOfCallButton.addEventListener("click", async () => {
       const entry: Entry = {
         id: crypto.randomUUID(),
-        title: document.title.replace(config.pageTitlePrefix, "").trim(),
-        meetId: location.pathname.replace("/", ""),
+        title: titleElement ? titleElement.getAttribute('data-meeting-title').trim() : meetId,
+        meetId: meetId,
         startDateTime,
         endDateTime: new Date().toISOString(),
       };
