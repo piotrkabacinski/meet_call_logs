@@ -1,4 +1,4 @@
-(()=>{var s={storageKey:"meet_sessions",pageTitlePrefix:"Meet \u2013"};var l=async(t,a)=>(t.splice(Number(a),1),await chrome.storage.local.set({[s.storageKey]:t}),t);var f=(t,a)=>{let n=Math.abs(a.getTime()-t.getTime()),e=Math.floor(n/1e3),o=Math.floor(e/(3600*24));e-=o*3600*24;let r=Math.floor(e/3600);e-=r*3600;let m=Math.floor(e/60),d=e-m*60,i="";return o&&(i+=o+" d "),r&&(i+=r+" h "),m?i+=m+" min ":d&&(i+=d+" sec "),i};var p=(t,a)=>{let n=new Date(t.endDateTime),e=new Date(t.startDateTime),o={hour:"2-digit",minute:"2-digit"};return`<tr>
+(()=>{var s={storageKey:"meet_sessions"};var l=async(t,a)=>(t.splice(Number(a),1),await chrome.storage.local.set({[s.storageKey]:t}),t);var f=(t,a)=>{let n=Math.abs(a.getTime()-t.getTime()),e=Math.floor(n/1e3),o=Math.floor(e/(3600*24));e-=o*3600*24;let r=Math.floor(e/3600);e-=r*3600;let m=Math.floor(e/60),d=e-m*60,i="";return o&&(i+=o+" d "),r&&(i+=r+" h "),m?i+=m+" min ":d&&(i+=d+" sec "),i};var p=(t,a)=>{let n=new Date(t.endDateTime),e=new Date(t.startDateTime),o={hour:"2-digit",minute:"2-digit"};return`<tr>
     <td class="title">
       <a
         href="https://meet.google.com/${t.meetId}"

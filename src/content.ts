@@ -4,10 +4,12 @@ import type { Entry } from "./types/Entry";
 {
   const { storageKey } = config;
 
-  const findParentButton = (element: HTMLElement) => {
+  const findParentButton = (element: HTMLElement): HTMLElement | undefined => {
     if (element.parentElement.nodeName === "BUTTON") return element.parentElement;
 
-    return findParentButton(element.parentElement);
+    if (element.parentElement) return findParentButton(element.parentElement);
+
+    return undefined;
   };
   
   let startDateTime: string | undefined;
