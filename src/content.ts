@@ -4,6 +4,12 @@ import type { Entry } from "./types/Entry";
 {
   const { storageKey } = config;
 
+  const findParentButton = (element: HTMLElement) => {
+    if (element.parentElement.nodeName === "BUTTON") return element.parentElement;
+
+    return findParentButton(element.parentElement);
+  };
+  
   let startDateTime: string | undefined;
 
   const observer = new MutationObserver(() => {
@@ -11,7 +17,7 @@ import type { Entry } from "./types/Entry";
 
     if (!endOfCallIcon) return;
 
-    const endOfCallButton = endOfCallIcon.parentElement;
+    const endOfCallButton = findParentButton(endOfCallIcon.parentElement);
 
     if (!endOfCallButton) throw "End of call button not found";
 
