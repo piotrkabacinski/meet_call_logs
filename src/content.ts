@@ -3,29 +3,19 @@ import type { Entry } from "./types/Entry";
 
 {
   const { storageKey } = config;
-
-  const findParentButton = (element: HTMLElement): HTMLElement | undefined => {
-    if (element.parentElement.nodeName === "BUTTON") return element.parentElement;
-
-    if (element.parentElement) return findParentButton(element.parentElement);
-
-    return undefined;
-  };
-  
-  let startDateTime: string | undefined;
-
+ 
   const observer = new MutationObserver(() => {
     const endOfCallIcon = Array.from(document.querySelectorAll("i")).find((e) => e.innerText === "call_end");
 
     if (!endOfCallIcon) return;
 
-    const endOfCallButton = findParentButton(endOfCallIcon.parentElement);
+    const endOfCallButton = endOfCallIcon.closest("button");
 
     if (!endOfCallButton) throw "End of call button not found";
 
-    startDateTime = new Date().toISOString()
+    const startDateTime = new Date().toISOString()
 
-    const titleElement = document.querySelector("[data-meeting-title]");
+    const titleElement = document.querySelector("div[data-meeting-title]");
     
     const meetId = location.pathname.replace("/", "");
 
@@ -33,7 +23,7 @@ import type { Entry } from "./types/Entry";
       const entry: Entry = {
         id: crypto.randomUUID(),
         title: titleElement ? titleElement.getAttribute('data-meeting-title').trim() : meetId,
-        meetId: meetId,
+        meetId,
         startDateTime,
         endDateTime: new Date().toISOString(),
       };
